@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -41,15 +43,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int sortearNumero( List<Integer> numbers){
+        Iterator<Integer> n;
         Random rand = new Random();
         int magicNumber = rand.nextInt(61)+1;
 
-        for(int num: numbers){
-            if (magicNumber != num){
-                numbers.add(magicNumber);
-            } else {
-                sortearNumero(numbers);
+        try {
+            for(n = numbers.iterator(); n.hasNext();){
+                if (n.next() == magicNumber){
+                    sortearNumero(numbers);
+                }
             }
+            numbers.add(magicNumber);
+        } catch (ConcurrentModificationException e){
+            System.out.println("exceção");
         }
 
         return magicNumber;
