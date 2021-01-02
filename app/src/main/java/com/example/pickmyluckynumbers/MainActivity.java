@@ -23,26 +23,30 @@ public class MainActivity extends AppCompatActivity {
     public void selecionarBotao(View v){
         List<Integer> numeros = new ArrayList<Integer>();
 
+        for (int i = 0; i < 6; i++){
+            sortearNumero(numeros);
+        }
+
         TextView txtnum1 = findViewById(R.id.num1);
-        txtnum1.setText(""+sortearNumero(numeros));
+        txtnum1.setText(""+ numeros.get(0));
 
         TextView txtnum2 = findViewById(R.id.num2);
-        txtnum2.setText(""+sortearNumero(numeros));
+        txtnum2.setText(""+numeros.get(1));
 
         TextView txtnum3 = findViewById(R.id.num3);
-        txtnum3.setText(""+sortearNumero(numeros));
+        txtnum3.setText(""+numeros.get(2));
 
         TextView txtnum4 = findViewById(R.id.num4);
-        txtnum4.setText(""+sortearNumero(numeros));
+        txtnum4.setText(""+numeros.get(3));
 
         TextView txtnum5 = findViewById(R.id.num5);
-        txtnum5.setText(""+sortearNumero(numeros));
+        txtnum5.setText(""+numeros.get(4));
 
         TextView txtnum6 = findViewById(R.id.num6);
-        txtnum6.setText(""+sortearNumero(numeros));
+        txtnum6.setText(""+numeros.get(5));
     }
 
-    public int sortearNumero( List<Integer> numbers){
+    public void sortearNumero(List<Integer> numbers){
         Iterator<Integer> n;
         Random rand = new Random();
         int magicNumber = rand.nextInt(61)+1;
@@ -53,11 +57,9 @@ public class MainActivity extends AppCompatActivity {
                     sortearNumero(numbers);
                 }
             }
-            numbers.add(magicNumber);
+            numbers.add(magicNumber); //adiciona no caso da lista estar vazia
         } catch (ConcurrentModificationException e){
             System.out.println("exceção");
         }
-
-        return magicNumber;
     }
 }
