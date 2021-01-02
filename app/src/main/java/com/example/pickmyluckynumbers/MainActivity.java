@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     sortearNumero(numbers);
                 }
             }
-            numbers.add(magicNumber); //adiciona no caso da lista estar vazia
+            numbers.add(magicNumber); //adiciona também no caso da lista estar vazia
         } catch (ConcurrentModificationException e){
             System.out.println("exceção");
         }
