@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         for(int num: numbers){
             if (magicNumber != num){
-                numbers.add(num);
+                numbers.add(magicNumber);
             } else {
                 sortearNumero(numbers);
             }
